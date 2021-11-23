@@ -61,3 +61,44 @@ From Jenkins UI,
 - name your maven configuration as the latest maven  version e.g maven-3.8
 - save
 
+
+### Install NPM and NODE in Jenkins container
+
+Enter container as root
+
+`docker exec -u 0 -it <containerID> bash`
+
+*NB: the flag -u 0 allows us to log into the container as a root user
+
+To check with linux distro our container is running
+
+`cat /etc/issue`
+
+run these commands to update and install curl;
+
+```
+apt update
+
+apt install curl
+
+```
+
+Run these commands to install Nodejs and npm
+
+```
+
+curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+
+bash nodesource_setup.sh
+
+apt install nodejs
+
+```
+
+check your nodejs and npm version
+
+```
+nodejs -v
+npm -v
+
+```
