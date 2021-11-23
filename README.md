@@ -93,6 +93,8 @@ bash nodesource_setup.sh
 
 apt install nodejs
 
+apt install npm
+
 ```
 
 check your nodejs and npm version
