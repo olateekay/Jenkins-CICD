@@ -17,7 +17,6 @@ Create a new Security Group,
 
 - Click Create. 
 
-I will be running Jenkins as a Docker Container.
 
 Lauch the ec2 instance with the new security group created.
 
@@ -27,6 +26,38 @@ Run;
 
 `apt update`
 
+we be installing Jenkins as a Docker Container.
+
 install Docker;
 
 `sudo apt install docker.io`
+
+
+Pull the official jenkins image and expose it on port 8080
+
+```
+docker run -p 8080:8080 -p 50000:50000 -d \
+-v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+```
+
+Running  `docker ps ` will show the jenkins containner running.
+
+Access the jenkins UI from your instance public URL on port 8080.
+
+
+print the initialisation password
+```
+cat
+/var/snap/docker/common/var-lib-docker/volumes/jenkins_home/
+_data/secrets/initialAdminPassword
+
+```
+
+### Configure plugin for maven
+From Jenkins UI,
+- go to manage plugins
+- go to global tool configuration
+- in the Maven section, click on 'Add maven'
+- name your maven configuration as the latest maven  version e.g maven-3.8
+- save
+
